@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+}
+.active {
+    font-weight: bolder;
+    color: crimson !important;
+}
+
+.container {
+    display: flex;
+}
+
+.main-content {
+    width: 100%;
+
+}
+
+.sidebar {
+    max-width: 200px;
+}

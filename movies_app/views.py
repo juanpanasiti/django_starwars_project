@@ -4,4 +4,13 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index.html', context={})
+    context = {
+        'home_page_active': 'active'
+    }
+    return render(request, 'home.html', context)
+
+def movies(request):
+    context = {
+        'movies_page_active': 'active'
+    }
+    return render(request, 'movies.html', context)
