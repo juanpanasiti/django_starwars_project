@@ -2,9 +2,47 @@
 
 {% block bodyPage %}
 <h1>Movies</h1>
-<a href="{% url 'home-page' %}" class="btn btn-success"> A Home</a>
+
+<form action="." method="GET">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="search-input" class="form-label">Search</label>
+        </div>
+        <div class="col-auto">
+            <input type="text" class="form-control" id="search-input" name="search">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+{% if movies %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <th scope="row">{{movie.order}}</th>
+            <td>{{movie.title}}</td>
+            <td> {{movie.description}} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+    <strong>Holy guacamole!</strong> There are no movies to show.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block sideBar %}
-<p>movies sidebar</p>
+{% include 'movies_sidebar.html' %}
 {% endblock %}
